@@ -1,0 +1,87 @@
+.navbar {
+  position: fixed;
+  top: -100px;  /* Initially hidden above the viewport */
+  width: 100%;
+  background: rgba(15, 14, 14, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+  padding: 1rem 2rem; 
+  animation: slideInDown 2.5s ease-in-out forwards;  /* Added forwards to keep it in position after animation */
+}
+
+@keyframes slideInDown {
+  0% {
+    top: -100px;  /* Start off-screen */
+    opacity: 0;  /* Initially invisible */
+  }
+  100% {
+    top: 0;  /* End at the top of the page */
+    opacity: 1;  /* Fully visible */
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #E6D5B8;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+
+}
+
+.navLinks {  /* Navigation items container */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navItem {  /* Each link animation */
+  opacity: 0;
+  transform: translateY(-10px);  /* Start slightly above */
+  animation: slideInLink  forwards;
+}
+
+@keyframes slideInLink {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);  /* Start above */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);  /* End at normal position */
+  }
+}
+
+
+.navLinks .resumeButton {  /* Special button animation */
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: slideInLink forwards;
+ 
+}
+
+.navItem:hover {  /* ✅ Fixed */
+  color: #53A2BE;
+}
+
+.resumeButton {  /* ✅ Fixed */
+  padding: 6px 12px;
+  border: 1px solid #53A2BE;
+  border-radius: 4px;
+  color: #53A2BE;
+  text-decoration: none;
+  transition: all 2.0ms ease-in-out;
+}
+
+.resumeButton:hover {  /* ✅ Fixed */
+  background: #53A2BE;
+  color: #0F0E0E;
+}
