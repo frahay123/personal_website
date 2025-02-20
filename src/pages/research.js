@@ -1,7 +1,5 @@
 const projects = [
-    { name: "Portfolio Website", description: "Built with Next.js and Tailwind CSS" },
-    { name: "E-Commerce App", description: "A fully-featured shopping platform" },
-    { name: "Portfolio Website", description: "Built with Frank and Tailwind CSS" },
+    { name: "ViPhy", description: "The MGE-TF project analyzes the possible regulation of phage genes by host transcription factors (TF), integrating information on the score extremeness, colocalization and intergenicity of predicted TF-binding sites in the phage genome."}
   ];
   
   export default function Projects() {
@@ -19,3 +17,6 @@ const projects = [
       </div>
     );
   }
+
+ 
+
