@@ -5,7 +5,7 @@ const projects= [
   export default function Projects() {
     return (
       <div className="min-h-screen bg-gray-900 text-white p-6">
-        <h1 className="text-4xl font-bold mb-6">Projects</h1>
+        <h1 className="text-4xl font-bold mb-6">Projects hfoweihfoweuhofuewhofuhwoeufh</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <div key={index} className="p-6 bg-gray-800 rounded-lg">
