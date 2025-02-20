@@ -1,4 +1,4 @@
-const projects = [
+const projects= [
     { name: "ViPhy", description: "The MGE-TF project analyzes the possible regulation of phage genes by host transcription factors (TF), integrating information on the score extremeness, colocalization and intergenicity of predicted TF-binding sites in the phage genome."}
   ];
   
@@ -10,7 +10,7 @@ const projects = [
           {projects.map((project, index) => (
             <div key={index} className="p-6 bg-gray-800 rounded-lg">
               <h2 className="text-2xl font-bold">{project.name}</h2>
-              <p className="text-gray-400 mt-2">{project.description}</p>
+              <p className="text-gray-400 mt-2 size-10">{project.description}</p>
             </div>
           ))}
         </div>
