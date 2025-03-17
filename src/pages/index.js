@@ -104,10 +104,6 @@ const Section = ({ id, children }) => {
 
 export default function Home() {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -329,7 +325,7 @@ export default function Home() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <h3>Get in Touch</h3>
-              <p>I'm always interested in hearing about new projects and opportunities.</p>
+              <p>I&apos;m always interested in hearing about new projects and opportunities.</p>
               <div className={styles.contactDetails}>
                 <p>Email: your.email@example.com</p>
                 <p>LinkedIn: linkedin.com/in/yourprofile</p>
