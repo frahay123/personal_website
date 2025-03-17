@@ -3,16 +3,25 @@
   font-weight: bold;
   margin-bottom: 20px;
   color: white;
-  padding: 0px;
+  padding: 20px;
+  margin-left: auto;
+  
 }
 .subtitle {
   font-size: 20px;
   margin-bottom: 30px;
   color: white;
+  margin-left: auto;
+  padding: 20px;
 } 
 
 .description {
   font-size: 18px;
   margin-bottom: 30px;
   color: white;
+}
+.image1, .image2 {
+  border-radius: 20px; /* Optional: Rounded corners */
+  max-width: 100%; /* Prevents images from overflowing */
+  height: auto; /* Ensures aspect ratio is maintained */
 }

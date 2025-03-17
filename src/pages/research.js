@@ -4,8 +4,8 @@ import styles from "../styles/research.module.css"; // Adjusted path to CSS file
 export default function Projects() {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Research</h1>
-      <h2 className={styles.subtitle}>UMBC Erill Lab: ViPhy</h2>
+      <h1 className={styles.title}> UMBC Research</h1>
+      <h2 className={styles.subtitle}>Erill Lab: ViPhy</h2>
 
       {/* Displaying the images */}
       <Image className={styles.image1}
