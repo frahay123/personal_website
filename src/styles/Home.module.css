@@ -3,13 +3,22 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     background-color: #0a192f;
     color: #8892b0;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 4rem 2rem;
 }
 
 .mainContent {
@@ -60,6 +69,7 @@
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+    z-index: 2;
 }
 
 .scrollText {
@@ -76,6 +86,213 @@
     background: linear-gradient(to bottom, #64ffda 0%, transparent 100%);
 }
 
+/* Section Content Styles */
+.sectionContent {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    color: #ccd6f6;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.sectionSubtitle {
+    font-size: 1.8rem;
+    color: #64ffda;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.imageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.researchImage {
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.researchImage:hover {
+    transform: translateY(-5px);
+}
+
+.researchDescription {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #8892b0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.researchDescription p {
+    margin-bottom: 1.5rem;
+}
+
+/* Project Section Styles */
+.projectGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.projectCard {
+    background: rgba(17, 34, 64, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.projectCard:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+}
+
+.projectCard h3 {
+    color: #ccd6f6;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.projectCard p {
+    color: #8892b0;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.techStack span {
+    background: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* About Section Styles */
+.aboutContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.aboutText {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #8892b0;
+}
+
+.aboutText p {
+    margin-bottom: 1.5rem;
+}
+
+.skillsContainer {
+    background: rgba(17, 34, 64, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.skillsContainer h3 {
+    color: #ccd6f6;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.skillsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.skillsGrid span {
+    color: #64ffda;
+    font-size: 1rem;
+}
+
+/* Contact Section Styles */
+.contactContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.contactInfo {
+    background: rgba(17, 34, 64, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.contactInfo h3 {
+    color: #ccd6f6;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.contactInfo p {
+    color: #8892b0;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.contactDetails p {
+    margin-bottom: 0.5rem;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup input,
+.formGroup textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(17, 34, 64, 0.7);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 4px;
+    color: #ccd6f6;
+    font-size: 1rem;
+}
+
+.formGroup textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.submitButton {
+    background: transparent;
+    border: 1px solid #64ffda;
+    color: #64ffda;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+    background: rgba(100, 255, 218, 0.1);
+}
+
 @media (max-width: 768px) {
     .name {
         font-size: 3rem;
@@ -85,5 +302,29 @@
     }
     .mainContent {
         padding: 0 1rem;
+    }
+    .section {
+        padding: 2rem 1rem;
+    }
+    .sectionTitle {
+        font-size: 2rem;
+    }
+    .sectionSubtitle {
+        font-size: 1.5rem;
+    }
+    .imageGrid {
+        grid-template-columns: 1fr;
+    }
+    .aboutContent,
+    .contactContent {
+        grid-template-columns: 1fr;
+    }
+    
+    .projectGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skillsGrid {
+        grid-template-columns: 1fr;
     }
 }

@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Image from "next/image"; // Import Next.js Image
 import styles from "../styles/research.module.css"; // Adjusted path to CSS file if needed
 
-export default function Projects() {
+export default function Research() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/#research');
+  }, [router]);
+
+  return null;
+}
+
+export function Projects() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}> UMBC Research</h1>
@@ -32,7 +44,7 @@ export default function Projects() {
       <p className={styles.description}>
         In this project, my assignment was to optimize the program for better efficiency. I achieved this by eliminating 
         redundant computations of genomes. Additionally, I improved the random number generation process for the bootstrap 
-        method by utilizing the `numpy` library to generate all random numbers at once, rather than relying on Python's 
+        method by utilizing the &apos;numpy&apos; library to generate all random numbers at once, rather than relying on Python&apos;s 
         built-in random number generator. This optimization led to a 70% improvement in script execution speed.
       </p>
     </div>

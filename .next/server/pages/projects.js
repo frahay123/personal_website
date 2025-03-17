@@ -73,7 +73,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Projects)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n\nconst projects = [\n    {\n        name: \"Portfolio Website\",\n        description: \"Built with Next.js and Tailwind CSS\"\n    },\n    {\n        name: \"E-Commerce App\",\n        description: \"A fully-featured shopping platform\"\n    }\n];\nfunction Projects() {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"min-h-screen bg-gray-900 text-white p-6\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h1\", {\n                className: \"text-4xl font-bold mb-6\",\n                children: \"Projects\"\n            }, void 0, false, {\n                fileName: \"/Users/frank/Documents/GitHub/personal_website/src/pages/projects.js\",\n                lineNumber: 9,\n                columnNumber: 9\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"grid grid-cols-1 md:grid-cols-2 gap-6\",\n                children: projects.map((project, index)=>/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                        className: \"p-6 bg-gray-800 rounded-lg\",\n                        children: [\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h2\", {\n                                className: \"text-2xl font-bold\",\n                                children: project.name\n                            }, void 0, false, {\n                                fileName: \"/Users/frank/Documents/GitHub/personal_website/src/pages/projects.js\",\n                                lineNumber: 13,\n                                columnNumber: 15\n                            }, this),\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                                className: \"text-gray-400 mt-2\",\n                                children: project.description\n                            }, void 0, false, {\n                                fileName: \"/Users/frank/Documents/GitHub/personal_website/src/pages/projects.js\",\n                                lineNumber: 14,\n                                columnNumber: 15\n                            }, this)\n                        ]\n                    }, index, true, {\n                        fileName: \"/Users/frank/Documents/GitHub/personal_website/src/pages/projects.js\",\n                        lineNumber: 12,\n                        columnNumber: 13\n                    }, this))\n            }, void 0, false, {\n                fileName: \"/Users/frank/Documents/GitHub/personal_website/src/pages/projects.js\",\n                lineNumber: 10,\n                columnNumber: 9\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/frank/Documents/GitHub/personal_website/src/pages/projects.js\",\n        lineNumber: 8,\n        columnNumber: 7\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvcGFnZXMvcHJvamVjdHMuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUFBLE1BQU1BLFdBQVc7SUFDYjtRQUFFQyxNQUFNO1FBQXFCQyxhQUFhO0lBQXNDO0lBQ2hGO1FBQUVELE1BQU07UUFBa0JDLGFBQWE7SUFBcUM7Q0FDN0U7QUFFYyxTQUFTQztJQUN0QixxQkFDRSw4REFBQ0M7UUFBSUMsV0FBVTs7MEJBQ2IsOERBQUNDO2dCQUFHRCxXQUFVOzBCQUEwQjs7Ozs7OzBCQUN4Qyw4REFBQ0Q7Z0JBQUlDLFdBQVU7MEJBQ1pMLFNBQVNPLEdBQUcsQ0FBQyxDQUFDQyxTQUFTQyxzQkFDdEIsOERBQUNMO3dCQUFnQkMsV0FBVTs7MENBQ3pCLDhEQUFDSztnQ0FBR0wsV0FBVTswQ0FBc0JHLFFBQVFQLElBQUk7Ozs7OzswQ0FDaEQsOERBQUNVO2dDQUFFTixXQUFVOzBDQUFzQkcsUUFBUU4sV0FBVzs7Ozs7Ozt1QkFGOUNPOzs7Ozs7Ozs7Ozs7Ozs7O0FBUXBCIiwic291cmNlcyI6WyIvVXNlcnMvZnJhbmsvRG9jdW1lbnRzL0dpdEh1Yi9wZXJzb25hbF93ZWJzaXRlL3NyYy9wYWdlcy9wcm9qZWN0cy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBwcm9qZWN0cyA9IFtcbiAgICB7IG5hbWU6IFwiUG9ydGZvbGlvIFdlYnNpdGVcIiwgZGVzY3JpcHRpb246IFwiQnVpbHQgd2l0aCBOZXh0LmpzIGFuZCBUYWlsd2luZCBDU1NcIiB9LFxuICAgIHsgbmFtZTogXCJFLUNvbW1lcmNlIEFwcFwiLCBkZXNjcmlwdGlvbjogXCJBIGZ1bGx5LWZlYXR1cmVkIHNob3BwaW5nIHBsYXRmb3JtXCIgfSxcbiAgXTtcbiAgXG4gIGV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFByb2plY3RzKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cIm1pbi1oLXNjcmVlbiBiZy1ncmF5LTkwMCB0ZXh0LXdoaXRlIHAtNlwiPlxuICAgICAgICA8aDEgY2xhc3NOYW1lPVwidGV4dC00eGwgZm9udC1ib2xkIG1iLTZcIj5Qcm9qZWN0czwvaDE+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtMSBtZDpncmlkLWNvbHMtMiBnYXAtNlwiPlxuICAgICAgICAgIHtwcm9qZWN0cy5tYXAoKHByb2plY3QsIGluZGV4KSA9PiAoXG4gICAgICAgICAgICA8ZGl2IGtleT17aW5kZXh9IGNsYXNzTmFtZT1cInAtNiBiZy1ncmF5LTgwMCByb3VuZGVkLWxnXCI+XG4gICAgICAgICAgICAgIDxoMiBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJvbGRcIj57cHJvamVjdC5uYW1lfTwvaDI+XG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtZ3JheS00MDAgbXQtMlwiPntwcm9qZWN0LmRlc2NyaXB0aW9ufTwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICkpfVxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgICk7XG4gIH0iXSwibmFtZXMiOlsicHJvamVjdHMiLCJuYW1lIiwiZGVzY3JpcHRpb24iLCJQcm9qZWN0cyIsImRpdiIsImNsYXNzTmFtZSIsImgxIiwibWFwIiwicHJvamVjdCIsImluZGV4IiwiaDIiLCJwIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/pages/projects.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Projects)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ \"./node_modules/next/router.js\");\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconst projects = [\n    {\n        name: \"Portfolio Website\",\n        description: \"Built with Next.js and Tailwind CSS\"\n    },\n    {\n        name: \"E-Commerce App\",\n        description: \"A fully-featured shopping platform\"\n    }\n];\nfunction Projects() {\n    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)({\n        \"Projects.useEffect\": ()=>{\n            router.push('/#projects');\n        }\n    }[\"Projects.useEffect\"], [\n        router\n    ]);\n    return null;\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvcGFnZXMvcHJvamVjdHMuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBa0M7QUFDTTtBQUV4QyxNQUFNRSxXQUFXO0lBQ2I7UUFBRUMsTUFBTTtRQUFxQkMsYUFBYTtJQUFzQztJQUNoRjtRQUFFRCxNQUFNO1FBQWtCQyxhQUFhO0lBQXFDO0NBQzdFO0FBRWMsU0FBU0M7SUFDdEIsTUFBTUMsU0FBU0wsc0RBQVNBO0lBRXhCRCxnREFBU0E7OEJBQUM7WUFDUk0sT0FBT0MsSUFBSSxDQUFDO1FBQ2Q7NkJBQUc7UUFBQ0Q7S0FBTztJQUVYLE9BQU87QUFDVCIsInNvdXJjZXMiOlsiL1VzZXJzL2ZyYW5rL0RvY3VtZW50cy9HaXRIdWIvcGVyc29uYWxfd2Vic2l0ZS9zcmMvcGFnZXMvcHJvamVjdHMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdXNlRWZmZWN0IH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgdXNlUm91dGVyIH0gZnJvbSAnbmV4dC9yb3V0ZXInO1xuXG5jb25zdCBwcm9qZWN0cyA9IFtcbiAgICB7IG5hbWU6IFwiUG9ydGZvbGlvIFdlYnNpdGVcIiwgZGVzY3JpcHRpb246IFwiQnVpbHQgd2l0aCBOZXh0LmpzIGFuZCBUYWlsd2luZCBDU1NcIiB9LFxuICAgIHsgbmFtZTogXCJFLUNvbW1lcmNlIEFwcFwiLCBkZXNjcmlwdGlvbjogXCJBIGZ1bGx5LWZlYXR1cmVkIHNob3BwaW5nIHBsYXRmb3JtXCIgfSxcbiAgXTtcbiAgXG4gIGV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFByb2plY3RzKCkge1xuICAgIGNvbnN0IHJvdXRlciA9IHVzZVJvdXRlcigpO1xuXG4gICAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICAgIHJvdXRlci5wdXNoKCcvI3Byb2plY3RzJyk7XG4gICAgfSwgW3JvdXRlcl0pO1xuXG4gICAgcmV0dXJuIG51bGw7XG4gIH0iXSwibmFtZXMiOlsidXNlRWZmZWN0IiwidXNlUm91dGVyIiwicHJvamVjdHMiLCJuYW1lIiwiZGVzY3JpcHRpb24iLCJQcm9qZWN0cyIsInJvdXRlciIsInB1c2giXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./src/pages/projects.js\n");
 
 /***/ }),
 
@@ -109,6 +109,17 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-dom":
+/*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react-dom");
+
+/***/ }),
+
 /***/ "react/jsx-dev-runtime":
 /*!****************************************!*\
   !*** external "react/jsx-dev-runtime" ***!
@@ -131,6 +142,17 @@ module.exports = require("react/jsx-runtime");
 
 /***/ }),
 
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
 /***/ "path":
 /*!***********************!*\
   !*** external "path" ***!
@@ -139,6 +161,28 @@ module.exports = require("react/jsx-runtime");
 
 "use strict";
 module.exports = require("path");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
 
 /***/ })
 
