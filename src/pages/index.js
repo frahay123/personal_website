@@ -1,4 +1,4 @@
-import { motion, useScroll, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";

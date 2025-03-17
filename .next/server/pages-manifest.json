@@ -2,9 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/projects": "pages/projects.js",
-  "/contact": "pages/contact.js",
-  "/research": "pages/research.js",
-  "/about": "pages/about.js",
   "/": "pages/index.js"
 }
