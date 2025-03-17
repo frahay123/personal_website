@@ -237,22 +237,38 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>UMBC Research</h2>
           <h3 className={styles.sectionSubtitle}>Erill Lab: ViPhy</h3>
           
-          <div className={styles.imageGrid}>
-            <Image
-              src="/image/viphy1.jpeg"
-              alt="ViPhy Project Image 1"
-              width={500}
-              height={300}
-              className={styles.researchImage}
-            />
-            <Image
-              src="/image/viphy2.jpeg"
-              alt="ViPhy Project Image 2"
-              width={500}
-              height={300}
-              className={styles.researchImage}
-            />
-          </div>
+          <motion.div
+            className={styles.imageGrid}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className={styles.imageContainer}>
+              <Image
+                src="/image/viphy1.jpeg"
+                alt="ViPhy Project Image 1"
+                width={600}
+                height={400}
+                className={styles.researchImage}
+                priority={true}
+                quality={90}
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+            <div className={styles.imageContainer}>
+              <Image
+                src="/image/viphy2.jpeg"
+                alt="ViPhy Project Image 2"
+                width={600}
+                height={400}
+                className={styles.researchImage}
+                priority={true}
+                quality={90}
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+          </motion.div>
 
           <div className={styles.researchDescription}>
             <p>

@@ -52,11 +52,12 @@
 
 .description p {
     margin: 0.5rem 0;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .description p:hover {
     color: #64ffda;
+    transform: translateX(10px);
 }
 
 .scrollIndicator {
@@ -110,19 +111,37 @@
 
 .imageGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
     margin: 2rem 0;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    background: rgba(17, 34, 64, 0.7);
+}
+
+.imageContainer:hover {
+    transform: translateY(-10px);
 }
 
 .researchImage {
-    border-radius: 4px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
     transition: transform 0.3s ease;
+    width: 100% !important;
+    height: 100% !important;
 }
 
-.researchImage:hover {
-    transform: translateY(-5px);
+.imageContainer:hover .researchImage {
+    transform: scale(1.05);
 }
 
 .researchDescription {
@@ -130,7 +149,17 @@
     line-height: 1.8;
     color: #8892b0;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(17, 34, 64, 0.7);
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.researchDescription:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-5px);
 }
 
 .researchDescription p {
@@ -143,6 +172,8 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .projectCard {
@@ -150,11 +181,30 @@
     padding: 2rem;
     border-radius: 8px;
     border: 1px solid rgba(100, 255, 218, 0.1);
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.projectCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
 }
 
 .projectCard:hover {
     border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-10px);
+}
+
+.projectCard:hover::before {
+    transform: translateX(100%);
 }
 
 .projectCard h3 {
@@ -181,6 +231,12 @@
     padding: 0.3rem 0.8rem;
     border-radius: 4px;
     font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.techStack span:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
 }
 
 /* About Section Styles */
@@ -189,12 +245,24 @@
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     margin-top: 2rem;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .aboutText {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #8892b0;
+    padding: 2rem;
+    background: rgba(17, 34, 64, 0.7);
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.aboutText:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-5px);
 }
 
 .aboutText p {
@@ -206,6 +274,12 @@
     padding: 2rem;
     border-radius: 8px;
     border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.skillsContainer:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-5px);
 }
 
 .skillsContainer h3 {
@@ -223,6 +297,15 @@
 .skillsGrid span {
     color: #64ffda;
     font-size: 1rem;
+    padding: 0.5rem;
+    background: rgba(100, 255, 218, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.skillsGrid span:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
 }
 
 /* Contact Section Styles */
@@ -231,6 +314,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     margin-top: 2rem;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .contactInfo {
@@ -238,6 +323,12 @@
     padding: 2rem;
     border-radius: 8px;
     border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contactInfo:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-5px);
 }
 
 .contactInfo h3 {
@@ -260,17 +351,35 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    background: rgba(17, 34, 64, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contactForm:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-5px);
 }
 
 .formGroup input,
 .formGroup textarea {
     width: 100%;
     padding: 1rem;
-    background: rgba(17, 34, 64, 0.7);
+    background: rgba(17, 34, 64, 0.9);
     border: 1px solid rgba(100, 255, 218, 0.1);
     border-radius: 4px;
     color: #ccd6f6;
     font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: rgba(100, 255, 218, 0.3);
+    box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
 }
 
 .formGroup textarea {
@@ -291,6 +400,7 @@
 
 .submitButton:hover {
     background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
@@ -314,6 +424,7 @@
     }
     .imageGrid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
     .aboutContent,
     .contactContent {
