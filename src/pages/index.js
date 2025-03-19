@@ -112,16 +112,44 @@ const ParticleBackground = () => {
 const Section = ({ id, children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isSmallPhone, setIsSmallPhone] = useState(false);
+
+  // Check if we're on a small phone
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallPhone(window.innerWidth <= 480);
+    };
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   return (
-    <section id={id} className={styles.section} ref={ref}>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {children}
-      </motion.div>
+    <section 
+      id={id} 
+      className={styles.section} 
+      ref={ref}
+      style={isSmallPhone ? {
+        minHeight: 'auto',
+        padding: '60px 0.75rem',
+        overflowY: 'visible'
+      } : {}}
+    >
+      {isSmallPhone ? (
+        // Simple div without animations for small phones to improve performance
+        <div style={{ width: '100%' }}>
+          {children}
+        </div>
+      ) : (
+        // Motion animations for larger devices
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {children}
+        </motion.div>
+      )}
     </section>
   );
 };
@@ -138,6 +166,47 @@ export default function Home() {
     email: '',
     message: ''
   });
+  const [isSmallPhone, setIsSmallPhone] = useState(false);
+
+  // Check for small phone screens
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallPhone(window.innerWidth <= 480);
+    };
+    
+    // Initial check
+    checkScreenSize();
+    
+    // Listen for resize events
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // Fix scrolling issues on load
+  useEffect(() => {
+    // Force document to be scrollable
+    document.documentElement.style.height = 'auto';
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.height = 'auto';
+    document.body.style.overflow = 'auto';
+    
+    // Fix for iOS momentum scrolling
+    document.body.style.WebkitOverflowScrolling = 'touch';
+    
+    // Handle iOS safari viewport issues
+    const fixViewportOnIOS = () => {
+      if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        const viewportHeight = window.innerHeight;
+        document.documentElement.style.setProperty('--vh', `${viewportHeight * 0.01}px`);
+      }
+    };
+    
+    fixViewportOnIOS();
+    window.addEventListener('resize', fixViewportOnIOS);
+    
+    return () => window.removeEventListener('resize', fixViewportOnIOS);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -176,7 +245,17 @@ export default function Home() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Calculate the position accounting for the navbar height
+      const isMobile = window.innerWidth <= 768;
+      const navbarHeight = isMobile ? 60 : 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+      
+      // Use window.scrollTo for better cross-browser compatibility
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -205,8 +284,17 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={containerRef} className={styles.container}>
-      <ParticleBackground />
+    <div 
+      ref={containerRef} 
+      className={styles.container}
+      style={isSmallPhone ? {
+        overflowY: 'visible',
+        minHeight: 'auto',
+        height: 'auto'
+      } : {}}
+    >
+      {/* Only show particles on larger screens */}
+      {!isSmallPhone && <ParticleBackground />}
       
       {/* Hero Section */}
       <Section id="home">

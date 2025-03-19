@@ -1,17 +1,17 @@
 /* styles/Home.module.css */
 
-/* Main container with smooth scrolling */
+/* Main container */
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    width: 100%;
     background-color: #0a192f;
     color: #8892b0;
     position: relative;
     overflow-x: hidden;
-    scroll-behavior: smooth; /* Ensure smooth scrolling */
 }
 
+/* Section styles */
 .section {
     min-height: 100vh;
     width: 100%;
@@ -20,14 +20,17 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 4rem 2rem;
+    padding: 80px 2rem;
 }
 
+/* Main content area */
 .mainContent {
     z-index: 1;
     text-align: left;
     max-width: 1000px;
-    padding: 0 2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .subtitle {
@@ -90,12 +93,12 @@
     background: linear-gradient(to bottom, #64ffda 0%, transparent 100%);
 }
 
-/* Section Content Styles */
+/* Section content container */
 .sectionContent {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .sectionTitle {
@@ -433,46 +436,91 @@
     font-size: 0.9rem;
 }
 
-/* Mobile responsiveness - activate at 768px or smaller screens */
+/* Mobile styles */
 @media (max-width: 768px) {
-    .name {
-        font-size: 3rem;
-    }
-    .description {
-        font-size: 1.2rem;
-    }
-    .mainContent {
-        padding: 0 1rem;
-    }
+    /* Fix section height on mobile */
     .section {
-        padding: 2rem 1rem;
-    }
-    .sectionTitle {
-        font-size: 2rem;
-    }
-    .sectionSubtitle {
-        font-size: 1.5rem;
-    }
-    .imageGrid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    .aboutContent,
-    .contactContent {
-        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 80px 1rem;
     }
     
-    .projectGrid {
-        grid-template-columns: 1fr;
+    /* Make main content centered on mobile */
+    .mainContent {
+        text-align: left;
+        padding: 0;
     }
     
-    .skillsGrid {
-        grid-template-columns: 1fr;
+    /* Ensure smooth scrolling - fix for CSS modules */
+    .container {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        position: relative;
+        min-height: auto;
+        height: auto;
     }
     
     /* Hide scroll indicator on mobile */
     .scrollIndicator {
         display: none;
+    }
+    
+    /* Ensure content is properly sized on mobile */
+    .sectionContent {
+        padding: 0.5rem;
+    }
+    
+    /* Adjust typography for mobile */
+    .name {
+        font-size: 3rem;
+    }
+    
+    .description {
+        font-size: 1.2rem;
+    }
+    
+    /* Stack all grid content on mobile */
+    .projectGrid, 
+    .aboutContent, 
+    .contactContent, 
+    .imageGrid,
+    .skillsGrid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Extra small devices (phones, 6 inches and smaller) */
+@media (max-width: 480px) {
+    .section {
+        padding: 60px 0.75rem;
+    }
+
+    .name {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+    }
+
+    .mainContent {
+        padding: 0 0.75rem;
+    }
+
+    .sectionContent {
+        padding: 0.5rem 0;
+    }
+    
+    .container {
+        overflow-y: visible;
+    }
+
+    .projectCard, 
+    .contactInfo, 
+    .contactForm, 
+    .aboutText, 
+    .skillsContainer {
+        padding: 1.5rem;
     }
 }
 

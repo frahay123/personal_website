@@ -1,27 +1,21 @@
 .navbar {
   position: fixed;
-  top: -100px;  /* Initially hidden above the viewport */
+  top: 0;
+  left: 0;
   width: 100%;
-  background: rgba(15, 14, 14, 0.9);
+  background: rgba(10, 25, 47, 0.95);
   backdrop-filter: blur(10px);
-  z-index: 50;
-  padding: 1rem 2rem; 
-  animation: slideInDown 2.5s ease-in-out forwards;  /* Keeps it in position after animation */
-}
-
-@keyframes slideInDown {
-  0% {
-    top: -100px;  /* Start off-screen */
-    opacity: 0;  /* Initially invisible */
-  }
-  100% {
-    top: 0;  /* End at the top of the page */
-    opacity: 1;  /* Fully visible */
-  }
+  z-index: 1000;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -29,65 +23,63 @@
 }
 
 .logo {
-  color: #E6D5B8;
-  font-family: 'Courier New', monospace;
+  color: #64ffda;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+  font-family: 'SF Mono', 'Fira Code', monospace;
 }
 
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .navItem {
-  opacity: 0;
-  transform: translateY(-10px);  /* Start slightly above */
-  animation: slideInLink forwards;
-  color: #E6D5B8;
+  color: #ccd6f6;
   text-decoration: none;
-}
-
-@keyframes slideInLink {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);  /* Start above */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);  /* End at normal position */
-  }
-}
-
-.navLinks .resumeButton {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: slideInLink forwards;
+  font-size: 0.9rem;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
 .navItem:hover {
-  color: #53A2BE;
+  color: #64ffda;
+}
+
+.navItem::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #64ffda;
+  transition: width 0.2s ease;
+}
+
+.navItem:hover::after {
+  width: 100%;
 }
 
 .resumeButton {
-  padding: 6px 12px;
-  border: 1px solid #53A2BE;
+  padding: 0.75rem 1rem;
+  border: 1px solid #64ffda;
   border-radius: 4px;
-  color: #53A2BE;
+  color: #64ffda;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
 .resumeButton:hover {
-  background: #53A2BE;
-  color: #0F0E0E;
+  background: rgba(100, 255, 218, 0.1);
 }
 
 /* Hamburger menu button - hidden by default, shown on mobile */
 .hamburger {
-  display: none;  /* Hidden on desktop */
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -96,81 +88,78 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 10;
+  z-index: 1010;
 }
 
 /* Individual hamburger menu lines */
 .hamburgerLine {
   width: 100%;
-  height: 3px;
-  background-color: #E6D5B8;
-  transition: all 0.3s ease-in-out;
-  border-radius: 3px;
+  height: 2px;
+  background-color: #64ffda;
+  transition: all 0.3s ease;
+  border-radius: 2px;
 }
 
-/* Mobile styles - activate at 768px or smaller screens */
+/* Mobile styles */
 @media (max-width: 768px) {
-  /* Make navbar smaller on mobile */
   .navbar {
-    padding: 0.8rem 1rem;
+    padding: 0 1.5rem;
+    height: 60px;
   }
   
-  /* Reduce logo size slightly */
   .logo {
     font-size: 1.2rem;
+    z-index: 1010;
   }
   
-  /* Show hamburger menu on mobile */
   .hamburger {
     display: flex;
   }
-
-  /* Transform nav links to full-screen overlay on mobile */
+  
   .navLinks {
     position: fixed;
     top: 0;
-    right: -100%;  /* Initially off-screen to the right */
-    height: 100vh;
+    right: -100%;
     width: 100%;
-    background: rgba(15, 14, 14, 0.95);
-    backdrop-filter: blur(10px);
-    flex-direction: column;  /* Stack links vertically */
+    height: 100vh;
+    background: rgba(10, 25, 47, 0.98);
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    transition: right 0.3s ease-in-out;
-    padding: 2rem;
-    gap: 2rem; /* Increase spacing between items for better touch targets */
+    transition: all 0.3s ease;
+    z-index: 1000;
+    padding: 0;
   }
-
-  /* Class added when mobile menu is open */
+  
   .navLinks.open {
-    right: 0;  /* Slide in from right */
+    right: 0;
   }
   
-  /* Make navigation items larger for better touch targets */
   .navItem {
-    font-size: 1.3rem;
-    padding: 0.5rem;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    text-align: center;
+    padding: 0.5rem 0;
+    width: 100%;
+    max-width: 200px;
   }
   
-  /* Make resume button larger for better touch target */
   .resumeButton {
-    padding: 8px 16px;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
     font-size: 1.1rem;
+    text-align: center;
+    min-width: 150px;
   }
-
-  /* Transform hamburger lines to X when menu is open */
-  /* First line rotates to form half of X */
+  
+  /* Transform hamburger into X when menu is open */
   .hamburgerLine.open:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }
-
-  /* Middle line disappears */
+  
   .hamburgerLine.open:nth-child(2) {
     opacity: 0;
   }
-
-  /* Third line rotates to form other half of X */
+  
   .hamburgerLine.open:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
   }
