@@ -436,8 +436,8 @@ export default function Home() {
               <h3>Get in Touch</h3>
               <p>I&apos;m always interested in hearing about new projects and opportunities.</p>
               <div className={styles.contactDetails}>
-                <p>Email: frankhl1@umbc.edu</p>
-                <p>LinkedIn: <a href="https://linkedin.com/in/frankleo" target="_blank" rel="noopener noreferrer">linkedin.com/in/frankleo</a></p>
+                <p>Email: frankhaydenleo@gmail.com</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/frank-hayden/" target="_blank" rel="noopener noreferrer">linkedin.com/in/frankleo</a></p>
                 <p>GitHub: <a href="https://github.com/frahay123" target="_blank" rel="noopener noreferrer">github.com/frankleo</a></p>
               </div>
             </motion.div>
