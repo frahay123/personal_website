@@ -10,6 +10,8 @@
     position: relative;
     overflow-x: hidden;
     scroll-behavior: smooth; /* Ensure smooth scrolling */
+    touch-action: manipulation; /* Improve touch scrolling */
+    -webkit-overflow-scrolling: touch; /* Ensure smooth momentum scrolling on iOS */
 }
 
 .section {
@@ -21,6 +23,7 @@
     align-items: center;
     position: relative;
     padding: 4rem 2rem;
+    touch-action: manipulation; /* Improve touch scrolling */
 }
 
 .mainContent {
@@ -433,6 +436,31 @@
     font-size: 0.9rem;
 }
 
+/* Modify hover effects for mobile */
+@media (hover: hover) {
+    .projectCard:hover {
+        border-color: rgba(100, 255, 218, 0.3);
+        transform: translateY(-10px);
+    }
+
+    .description p:hover {
+        color: #64ffda;
+        transform: translateX(10px);
+    }
+
+    .imageContainer:hover {
+        transform: translateY(-10px);
+    }
+
+    .aboutText:hover, 
+    .skillsContainer:hover, 
+    .contactInfo:hover, 
+    .researchDescription:hover {
+        border-color: rgba(100, 255, 218, 0.3);
+        transform: translateY(-5px);
+    }
+}
+
 /* Mobile responsiveness - activate at 768px or smaller screens */
 @media (max-width: 768px) {
     .name {
@@ -445,7 +473,11 @@
         padding: 0 1rem;
     }
     .section {
+        /* Reduce minimum height for mobile to make scrolling easier */
+        min-height: 80vh;
         padding: 2rem 1rem;
+        /* Ensure sections don't have excess padding causing scroll issues */
+        box-sizing: border-box;
     }
     .sectionTitle {
         font-size: 2rem;
@@ -470,8 +502,32 @@
         grid-template-columns: 1fr;
     }
     
+    /* Remove transform animations on mobile that might interfere with scrolling */
+    .projectCard:hover,
+    .imageContainer:hover,
+    .aboutText:hover,
+    .skillsContainer:hover,
+    .contactInfo:hover,
+    .researchDescription:hover,
+    .description p:hover {
+        transform: none;
+    }
+    
     /* Hide scroll indicator on mobile */
     .scrollIndicator {
+        display: none;
+    }
+    
+    /* Additional mobile-specific fixes */
+    .container, .section {
+        /* Ensure scrolling works properly */
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        overscroll-behavior-y: none;
+    }
+    
+    /* Reduce the intensity of animations that might interfere with scrolling */
+    .projectCard::before {
         display: none;
     }
 }

@@ -6,7 +6,7 @@
   backdrop-filter: blur(10px);
   z-index: 50;
   padding: 1rem 2rem; 
-  animation: slideInDown 2.5s ease-in-out forwards;  /* Keeps it in position after animation */
+  animation: slideInDown 1.5s ease-in-out forwards;  /* Reduced animation time */
 }
 
 @keyframes slideInDown {
@@ -113,6 +113,7 @@
   /* Make navbar smaller on mobile */
   .navbar {
     padding: 0.8rem 1rem;
+    animation-duration: 0.8s; /* Even shorter animation on mobile */
   }
   
   /* Reduce logo size slightly */
@@ -123,8 +124,10 @@
   /* Show hamburger menu on mobile */
   .hamburger {
     display: flex;
+    position: relative;
+    z-index: 51;
   }
-
+  
   /* Transform nav links to full-screen overlay on mobile */
   .navLinks {
     position: fixed;
@@ -139,7 +142,8 @@
     align-items: center;
     transition: right 0.3s ease-in-out;
     padding: 2rem;
-    gap: 2rem; /* Increase spacing between items for better touch targets */
+    gap: 2.5rem; /* Increase spacing between items for better touch targets */
+    z-index: 49; /* Keep below hamburger button */
   }
 
   /* Class added when mobile menu is open */
@@ -149,14 +153,19 @@
   
   /* Make navigation items larger for better touch targets */
   .navItem {
-    font-size: 1.3rem;
-    padding: 0.5rem;
+    font-size: 1.5rem;
+    padding: 1rem; /* Much larger touch target */
+    width: 80%; /* Make the touch area wider */
+    text-align: center;
   }
   
   /* Make resume button larger for better touch target */
   .resumeButton {
-    padding: 8px 16px;
-    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    width: 80%;
+    text-align: center;
+    margin-top: 1rem;
   }
 
   /* Transform hamburger lines to X when menu is open */

@@ -9,6 +9,8 @@ html {
   scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
   height: 100%;
   overflow-x: hidden;
+  overscroll-behavior-y: none; /* Prevents the "bounce" effect that can disrupt scrolling */
+  touch-action: manipulation; /* Improves touch responsiveness */
 }
 
 body {
@@ -23,11 +25,16 @@ body {
   -webkit-overflow-scrolling: touch;
   height: 100%;
   padding-top: 80px; /* Space for fixed navbar */
+  /* Improve scrolling performance */
+  overscroll-behavior-y: none;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  touch-action: manipulation; /* Improve touch responsiveness everywhere */
 }
 
 /* Link styles */
@@ -37,6 +44,7 @@ a {
   transition: color 0.3s ease;
   /* Improve touch area for mobile */
   touch-action: manipulation;
+  padding: 0.2rem 0; /* Slightly larger touch target by default */
 }
 
 a:hover {
@@ -109,6 +117,12 @@ a:hover {
   
   /* Larger touch targets for mobile */
   a {
-    padding: 0.2rem 0;
+    padding: 0.5rem 0.2rem; /* Even larger touch targets on mobile */
+  }
+  
+  /* Reduce motion for better performance on mobile */
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
 }

@@ -173,10 +173,15 @@ export default function Home() {
     }
   };
 
+  // Simplify scrollToSection function to ensure smooth scrolling on mobile
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Use smooth scrolling behavior
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 
@@ -208,13 +213,13 @@ export default function Home() {
     <div ref={containerRef} className={styles.container}>
       <ParticleBackground />
       
-      {/* Hero Section */}
+      {/* Hero Section - Simplified for better mobile performance */}
       <Section id="home">
         <motion.div 
           className={styles.mainContent}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
         >
           <motion.h1 
             className={styles.subtitle}
@@ -266,23 +271,23 @@ export default function Home() {
           onClick={() => scrollToSection('projects')}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          style={{ display: 'none' }} // Initially hidden, will be shown via useEffect if appropriate
+          transition={{ delay: 0.8, duration: 0.6 }}
+          style={{ display: 'none' }} // Initially hidden, shown via useEffect if appropriate
         >
           <span className={styles.scrollText}>Scroll Down</span>
           <div className={styles.scrollLine} />
         </motion.div>
       </Section>
 
-      {/* Projects Section */}
+      {/* Projects Section - Simplified animations */}
       <Section id="projects">
         <div className={styles.sectionContent}>
           <h2 className={styles.sectionTitle}>Projects</h2>
           <div className={styles.projectGrid}>
             <motion.div 
               className={styles.projectCard}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
               <h3>Project 1</h3>
               <p>Description of your first project goes here. This is a placeholder that you can replace with your actual project details.</p>
@@ -295,8 +300,8 @@ export default function Home() {
 
             <motion.div 
               className={styles.projectCard}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
               <h3>Project 2</h3>
               <p>Description of your second project goes here. This is a placeholder that you can replace with your actual project details.</p>
@@ -309,8 +314,8 @@ export default function Home() {
 
             <motion.div 
               className={styles.projectCard}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
               <h3>Project 3</h3>
               <p>Description of your third project goes here. This is a placeholder that you can replace with your actual project details.</p>
@@ -430,8 +435,8 @@ export default function Home() {
           <div className={styles.contactContent}>
             <motion.div 
               className={styles.contactInfo}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
               <h3>Get in Touch</h3>
               <p>I&apos;m always interested in hearing about new projects and opportunities.</p>
@@ -444,8 +449,8 @@ export default function Home() {
             <motion.form 
               className={styles.contactForm}
               onSubmit={handleSubmit}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
               <div className={styles.formGroup}>
                 <input
