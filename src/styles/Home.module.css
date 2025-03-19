@@ -10,9 +10,6 @@
     position: relative;
     overflow-x: hidden;
     scroll-behavior: smooth; /* Ensure smooth scrolling */
-    touch-action: manipulation; /* Improve touch scrolling */
-    -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
-    height: auto; /* Allow content to determine height */
 }
 
 .section {
@@ -24,7 +21,6 @@
     align-items: center;
     position: relative;
     padding: 4rem 2rem;
-    touch-action: manipulation; /* Improve touch scrolling */
 }
 
 .mainContent {
@@ -449,21 +445,10 @@
         padding: 0 1rem;
     }
     .section {
-        /* Make sections easier to scroll through on mobile */
-        min-height: 80vh;
         padding: 2rem 1rem;
-        justify-content: flex-start; /* Start content at the top */
-        overflow: visible; /* Ensure content isn't cut off */
-        position: relative !important;
-        overflow-y: visible !important;
-        min-height: unset;
-        height: auto !important;
-        padding-top: 60px;
-        padding-bottom: 60px;
     }
     .sectionTitle {
         font-size: 2rem;
-        margin-top: 3rem; /* Add space at the top for better scrolling */
     }
     .sectionSubtitle {
         font-size: 1.5rem;
@@ -488,26 +473,6 @@
     /* Hide scroll indicator on mobile */
     .scrollIndicator {
         display: none;
-    }
-    
-    /* Improve touch scrolling on mobile */
-    .container {
-        touch-action: pan-y; /* Allow vertical scrolling */
-        height: auto;
-        overflow-y: visible;
-        position: relative;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Reduce animations that might interfere with scrolling */
-    .projectCard:hover,
-    .imageContainer:hover,
-    .aboutText:hover,
-    .skillsContainer:hover,
-    .contactInfo:hover,
-    .researchDescription:hover,
-    .description p:hover {
-        transform: none;
     }
 }
 

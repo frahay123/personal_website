@@ -4,21 +4,7 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
 const ParticleBackground = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    // Skip particle animation on mobile for better performance
-    if (isMobile) return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-    
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -104,13 +90,9 @@ const ParticleBackground = () => {
       window.removeEventListener('resize', debouncedResize);
       clearTimeout(resizeTimeout);
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', checkMobile);
     };
-  }, [isMobile]);
+  }, []);
 
-  // Don't render canvas on mobile for better performance
-  if (isMobile) return null;
-  
   return (
     <canvas
       id="particle-canvas"
@@ -131,61 +113,15 @@ const Section = ({ id, children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Check if we're on mobile
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   return (
-    <section 
-      id={id} 
-      className={styles.section} 
-      ref={ref} 
-      style={{ 
-        touchAction: 'pan-y',
-        minHeight: isMobile ? 'auto' : '100vh',
-        paddingTop: isMobile ? '60px' : '80px',
-        paddingBottom: isMobile ? '60px' : '80px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%'
-      }}
-    >
-      {isMobile ? (
-        // On mobile, don't use motion animations that might interfere with scrolling
-        <div 
-          className="mobile-section-content" 
-          style={{ 
-            width: '100%',
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: '0 1rem'
-          }}
-        >
-          {children}
-        </div>
-      ) : (
-        // On desktop, use motion animations
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ 
-            width: '100%', 
-            touchAction: 'pan-y',
-            maxWidth: '1200px',
-            margin: '0 auto',
-            padding: '0 2rem'
-          }}
-        >
-          {children}
-        </motion.div>
-      )}
+    <section id={id} className={styles.section} ref={ref}>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {children}
+      </motion.div>
     </section>
   );
 };
@@ -202,15 +138,6 @@ export default function Home() {
     email: '',
     message: ''
   });
-  const [isMobile, setIsMobile] = useState(false);
-  
-  // Check if we're on mobile
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -246,21 +173,10 @@ export default function Home() {
     }
   };
 
-  // Better scrolling for mobile
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // On mobile devices, we need to account for the fixed navbar
-      const isMobile = window.innerWidth <= 768;
-      const navbarHeight = isMobile ? 60 : 80; // Mobile navbar is 60px, desktop is 80px
-      
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - navbarHeight;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -288,117 +204,62 @@ export default function Home() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Add a useEffect to fix mobile scrolling issues
-  useEffect(() => {
-    // Fix to ensure page is scrollable on mobile
-    const fixMobileScroll = () => {
-      // Simpler approach to ensure scrollability on mobile
-      document.body.style.position = 'relative';
-      document.body.style.height = 'auto';
-      document.body.style.overflow = 'auto';
-      document.body.style.touchAction = 'auto';
-      
-      // Add a force-scroll touchend listener to help iOS
-      const forceScroll = () => {
-        setTimeout(() => window.scrollBy(0, 1), 100);
-        setTimeout(() => window.scrollBy(0, -1), 200);
-      };
-      
-      document.addEventListener('touchend', forceScroll, { passive: true });
-      
-      return () => {
-        document.removeEventListener('touchend', forceScroll);
-      };
-    };
-    
-    const cleanup = fixMobileScroll();
-    return cleanup;
-  }, []);
-
   return (
-    <div 
-      ref={containerRef} 
-      className={styles.container} 
-      style={{ 
-        touchAction: 'auto', 
-        height: 'auto',
-        overflow: 'visible'
-      }}
-    >
+    <div ref={containerRef} className={styles.container}>
       <ParticleBackground />
       
       {/* Hero Section */}
       <Section id="home">
-        {isMobile ? (
-          // No animations on mobile for better scrolling
-          <div className={styles.mainContent} style={{ 
-            width: '100%', 
-            maxWidth: '100%', 
-            margin: '0 auto',
-            padding: '0 1rem',
-            textAlign: 'left'
-          }}>
-            <h1 className={styles.subtitle}>Hi, my name is</h1>
-            <h2 className={styles.name}>Frank Leo</h2>
-            <div className={styles.description}>
-              <p>Computational Biologist</p>
-              <p>Programmer</p>
-              <p>Soccer Enthusiast</p>
-            </div>
-          </div>
-        ) : (
-          // Animations only on desktop
-          <motion.div 
-            className={styles.mainContent}
+        <motion.div 
+          className={styles.mainContent}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.h1 
+            className={styles.subtitle}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <motion.h1 
-              className={styles.subtitle}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              Hi, my name is
-            </motion.h1>
+            Hi, my name is
+          </motion.h1>
 
-            <motion.h2 
-              className={styles.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
-              Frank Leo
-            </motion.h2>
+          <motion.h2 
+            className={styles.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            Frank Leo
+          </motion.h2>
 
-            <motion.div 
-              className={styles.description}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+          <motion.div 
+            className={styles.description}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
+            <motion.p
+              whileHover={{ x: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              <motion.p
-                whileHover={{ x: 10 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Computational Biologist
-              </motion.p>
-              <motion.p
-                whileHover={{ x: 10 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Programmer
-              </motion.p>
-              <motion.p
-                whileHover={{ x: 10 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                Soccer Enthusiast
-              </motion.p>
-            </motion.div>
+              Computational Biologist
+            </motion.p>
+            <motion.p
+              whileHover={{ x: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              Programmer
+            </motion.p>
+            <motion.p
+              whileHover={{ x: 10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              Soccer Enthusiast
+            </motion.p>
           </motion.div>
-        )}
+        </motion.div>
 
         <motion.div 
           className={styles.scrollIndicator}
@@ -418,85 +279,47 @@ export default function Home() {
         <div className={styles.sectionContent}>
           <h2 className={styles.sectionTitle}>Projects</h2>
           <div className={styles.projectGrid}>
-            {isMobile ? (
-              // Regular divs for mobile
-              <>
-                <div className={styles.projectCard}>
-                  <h3>Project 1</h3>
-                  <p>Description of your first project goes here. This is a placeholder that you can replace with your actual project details.</p>
-                  <div className={styles.techStack}>
-                    <span>React</span>
-                    <span>Node.js</span>
-                    <span>MongoDB</span>
-                  </div>
-                </div>
-                
-                <div className={styles.projectCard}>
-                  <h3>Project 2</h3>
-                  <p>Description of your second project goes here. This is a placeholder that you can replace with your actual project details.</p>
-                  <div className={styles.techStack}>
-                    <span>Python</span>
-                    <span>TensorFlow</span>
-                    <span>Docker</span>
-                  </div>
-                </div>
-                
-                <div className={styles.projectCard}>
-                  <h3>Project 3</h3>
-                  <p>Description of your third project goes here. This is a placeholder that you can replace with your actual project details.</p>
-                  <div className={styles.techStack}>
-                    <span>JavaScript</span>
-                    <span>Express</span>
-                    <span>PostgreSQL</span>
-                  </div>
-                </div>
-              </>
-            ) : (
-              // Motion divs for desktop
-              <>
-                <motion.div 
-                  className={styles.projectCard}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3>Project 1</h3>
-                  <p>Description of your first project goes here. This is a placeholder that you can replace with your actual project details.</p>
-                  <div className={styles.techStack}>
-                    <span>React</span>
-                    <span>Node.js</span>
-                    <span>MongoDB</span>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className={styles.projectCard}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3>Project 2</h3>
-                  <p>Description of your second project goes here. This is a placeholder that you can replace with your actual project details.</p>
-                  <div className={styles.techStack}>
-                    <span>Python</span>
-                    <span>TensorFlow</span>
-                    <span>Docker</span>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className={styles.projectCard}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <h3>Project 3</h3>
-                  <p>Description of your third project goes here. This is a placeholder that you can replace with your actual project details.</p>
-                  <div className={styles.techStack}>
-                    <span>JavaScript</span>
-                    <span>Express</span>
-                    <span>PostgreSQL</span>
-                  </div>
-                </motion.div>
-              </>
-            )}
+            <motion.div 
+              className={styles.projectCard}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <h3>Project 1</h3>
+              <p>Description of your first project goes here. This is a placeholder that you can replace with your actual project details.</p>
+              <div className={styles.techStack}>
+                <span>React</span>
+                <span>Node.js</span>
+                <span>MongoDB</span>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className={styles.projectCard}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <h3>Project 2</h3>
+              <p>Description of your second project goes here. This is a placeholder that you can replace with your actual project details.</p>
+              <div className={styles.techStack}>
+                <span>Python</span>
+                <span>TensorFlow</span>
+                <span>Docker</span>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className={styles.projectCard}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <h3>Project 3</h3>
+              <p>Description of your third project goes here. This is a placeholder that you can replace with your actual project details.</p>
+              <div className={styles.techStack}>
+                <span>JavaScript</span>
+                <span>Express</span>
+                <span>PostgreSQL</span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </Section>
