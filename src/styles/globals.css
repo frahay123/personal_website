@@ -7,10 +7,11 @@
 /* Base HTML and body styles */
 html {
   scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
-  height: 100%;
   overflow-x: hidden;
-  overscroll-behavior-y: none; /* Prevents the "bounce" effect that can disrupt scrolling */
-  touch-action: manipulation; /* Improves touch responsiveness */
+  overflow-y: auto !important; /* Always allow vertical scrolling */
+  height: auto !important; /* Let content determine height */
+  -webkit-overflow-scrolling: touch; /* Ensure smooth momentum scrolling on iOS */
+  touch-action: manipulation; /* Improve touch responsiveness */
 }
 
 body {
@@ -21,14 +22,13 @@ body {
   background-color: #0a192f;
   color: #8892b0;
   overflow-x: hidden;
+  overflow-y: auto !important; /* Always allow vertical scrolling */
   /* Ensure scrolling works well on touch devices */
   -webkit-overflow-scrolling: touch;
-  height: 100%;
-  padding-top: 80px; /* Space for fixed navbar */
-  /* Improve scrolling performance */
-  overscroll-behavior-y: none;
-  position: relative;
-  -webkit-tap-highlight-color: transparent;
+  height: auto !important; /* Let content determine height */
+  padding-top: 70px; /* Slightly reduced space for fixed navbar */
+  position: relative; /* Use relative positioning instead of fixed */
+  touch-action: pan-y; /* Allow vertical scrolling gestures */
 }
 
 * {
@@ -113,16 +113,27 @@ a:hover {
 @media (max-width: 768px) {
   body {
     padding-top: 60px; /* Smaller padding for mobile navbar */
+    width: 100%;
+    position: relative;
+    overflow-y: auto !important;
   }
   
   /* Larger touch targets for mobile */
   a {
     padding: 0.5rem 0.2rem; /* Even larger touch targets on mobile */
+    display: inline-block; /* Ensure the padding is applied */
   }
   
-  /* Reduce motion for better performance on mobile */
-  * {
-    animation-duration: 0.001ms !important;
-    transition-duration: 0.001ms !important;
+  /* Make sure all fixed elements don't interfere with scrolling */
+  .fixed, [class*="fixed-"], [style*="position: fixed"] {
+    position: absolute !important;
+  }
+  
+  /* Ensure main content area is scrollable */
+  #__next, main, [id="__next"] {
+    height: auto !important;
+    min-height: 100%;
+    position: relative !important;
+    overflow: visible !important;
   }
 }
