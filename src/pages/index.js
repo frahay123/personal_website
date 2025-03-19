@@ -437,8 +437,8 @@ export default function Home() {
               <p>I&apos;m always interested in hearing about new projects and opportunities.</p>
               <div className={styles.contactDetails}>
                 <p>Email: frankhaydenleo@gmail.com</p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/frank-hayden/" target="_blank" rel="noopener noreferrer">linkedin.com/in/frankleo</a></p>
-                <p>GitHub: <a href="https://github.com/frahay123" target="_blank" rel="noopener noreferrer">github.com/frankleo</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/frank-hayden/" target="_blank" rel="noopener noreferrer">linkedin.com/in/frankhayden</a></p>
+                <p>GitHub: <a href="https://github.com/frahay123" target="_blank" rel="noopener noreferrer">github.com/frankhayden</a></p>
               </div>
             </motion.div>
             <motion.form 
