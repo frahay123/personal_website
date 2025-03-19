@@ -1,13 +1,31 @@
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import styles from '../styles/Navbar.module.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   // Close menu when clicking on a link
-  const handleLinkClick = () => {
+  const handleLinkClick = (e) => {
+    e.preventDefault();
     setIsMenuOpen(false);
+    
+    // Get the target section id from href
+    const href = e.currentTarget.getAttribute('href');
+    const targetId = href.replace('/#', '');
+    const targetSection = document.getElementById(targetId);
+    
+    if (targetSection) {
+      // Calculate proper scroll position accounting for navbar height
+      const navbarHeight = window.innerWidth <= 768 ? 60 : 80;
+      const elementPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+      
+      // Smooth scroll to the section
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   // Toggle mobile menu
@@ -59,9 +77,9 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
-        <Link href="/#home" className={styles.logo}>
+        <a href="#home" className={styles.logo} onClick={handleLinkClick}>
           FL
-        </Link>
+        </a>
 
         <button 
           className={styles.hamburger} 
@@ -74,18 +92,18 @@ const Navbar = () => {
         </button>
 
         <div className={`${styles.navLinks} ${isMenuOpen ? styles.open : ''}`}>
-          <Link href="/#projects" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.1s'}}>
+          <a href="#projects" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.1s'}}>
             Projects
-          </Link>
-          <Link href="/#research" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.2s'}}>
+          </a>
+          <a href="#research" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.2s'}}>
             Research
-          </Link>
-          <Link href="/#about" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.3s'}}>
+          </a>
+          <a href="#about" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.3s'}}>
             About
-          </Link>
-          <Link href="/#contact" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.4s'}}>
+          </a>
+          <a href="#contact" className={styles.navItem} onClick={handleLinkClick} style={{animationDelay: '0.4s'}}>
             Contact
-          </Link>
+          </a>
           <a 
             href="/resume.pdf" 
             className={styles.resumeButton} 

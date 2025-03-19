@@ -147,12 +147,26 @@ const Section = ({ id, children }) => {
       ref={ref} 
       style={{ 
         touchAction: 'pan-y',
-        minHeight: isMobile ? 'auto' : '100vh'
+        minHeight: isMobile ? 'auto' : '100vh',
+        paddingTop: isMobile ? '60px' : '80px',
+        paddingBottom: isMobile ? '60px' : '80px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
       }}
     >
       {isMobile ? (
         // On mobile, don't use motion animations that might interfere with scrolling
-        <div className="mobile-section-content" style={{ width: '100%' }}>
+        <div 
+          className="mobile-section-content" 
+          style={{ 
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 1rem'
+          }}
+        >
           {children}
         </div>
       ) : (
@@ -161,7 +175,13 @@ const Section = ({ id, children }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ width: '100%', touchAction: 'pan-y' }}
+          style={{ 
+            width: '100%', 
+            touchAction: 'pan-y',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 2rem'
+          }}
         >
           {children}
         </motion.div>
@@ -226,10 +246,21 @@ export default function Home() {
     }
   };
 
+  // Better scrolling for mobile
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // On mobile devices, we need to account for the fixed navbar
+      const isMobile = window.innerWidth <= 768;
+      const navbarHeight = isMobile ? 60 : 80; // Mobile navbar is 60px, desktop is 80px
+      
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -300,7 +331,13 @@ export default function Home() {
       <Section id="home">
         {isMobile ? (
           // No animations on mobile for better scrolling
-          <div className={styles.mainContent}>
+          <div className={styles.mainContent} style={{ 
+            width: '100%', 
+            maxWidth: '100%', 
+            margin: '0 auto',
+            padding: '0 1rem',
+            textAlign: 'left'
+          }}>
             <h1 className={styles.subtitle}>Hi, my name is</h1>
             <h2 className={styles.name}>Frank Leo</h2>
             <div className={styles.description}>
