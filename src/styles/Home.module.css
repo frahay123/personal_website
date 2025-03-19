@@ -1,5 +1,6 @@
 /* styles/Home.module.css */
 
+/* Main container with smooth scrolling */
 .container {
     display: flex;
     flex-direction: column;
@@ -8,6 +9,7 @@
     color: #8892b0;
     position: relative;
     overflow-x: hidden;
+    scroll-behavior: smooth; /* Ensure smooth scrolling */
 }
 
 .section {
@@ -60,6 +62,7 @@
     transform: translateX(10px);
 }
 
+/* Scroll indicator - visible only on desktop */
 .scrollIndicator {
     position: absolute;
     bottom: 2rem;
@@ -347,62 +350,90 @@
     margin-bottom: 0.5rem;
 }
 
-.contactForm {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background: rgba(17, 34, 64, 0.7);
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    transition: all 0.3s ease;
+.contactDetails a {
+    color: #64ffda;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.contactForm:hover {
-    border-color: rgba(100, 255, 218, 0.3);
-    transform: translateY(-5px);
+.contactDetails a:hover {
+    color: #ccd6f6;
+}
+
+/* Contact Form Styles */
+.contactForm {
+    background: rgba(17, 34, 64, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 500px;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
 }
 
 .formGroup input,
 .formGroup textarea {
     width: 100%;
-    padding: 1rem;
-    background: rgba(17, 34, 64, 0.9);
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    border-radius: 4px;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
     color: #ccd6f6;
     font-size: 1rem;
     transition: all 0.3s ease;
 }
 
+.formGroup textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
 .formGroup input:focus,
 .formGroup textarea:focus {
     outline: none;
-    border-color: rgba(100, 255, 218, 0.3);
-    box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
-}
-
-.formGroup textarea {
-    height: 150px;
-    resize: vertical;
+    border-color: #64ffda;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .submitButton {
     background: transparent;
-    border: 1px solid #64ffda;
+    border: 2px solid #64ffda;
     color: #64ffda;
-    padding: 1rem 2rem;
-    border-radius: 4px;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .submitButton:hover {
     background: rgba(100, 255, 218, 0.1);
-    transform: translateY(-2px);
 }
 
+.submitButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.successMessage {
+    color: #64ffda;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.errorMessage {
+    color: #ff6b6b;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Mobile responsiveness - activate at 768px or smaller screens */
 @media (max-width: 768px) {
     .name {
         font-size: 3rem;
@@ -437,5 +468,17 @@
     
     .skillsGrid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Hide scroll indicator on mobile */
+    .scrollIndicator {
+        display: none;
+    }
+}
+
+/* Also hide scroll indicator on smaller desktop screens */
+@media (max-height: 700px) {
+    .scrollIndicator {
+        display: none;
     }
 }

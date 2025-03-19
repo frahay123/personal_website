@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
@@ -13,6 +13,8 @@ const ParticleBackground = () => {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      // Reinitialize particles on resize to ensure they're properly distributed
+      init();
     };
 
     class Particle {
@@ -29,8 +31,22 @@ const ParticleBackground = () => {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        // Ensure particles stay within bounds after resize
+        if (this.x < 0) {
+          this.x = 0;
+          this.speedX *= -1;
+        } else if (this.x > canvas.width) {
+          this.x = canvas.width;
+          this.speedX *= -1;
+        }
+        
+        if (this.y < 0) {
+          this.y = 0;
+          this.speedY *= -1;
+        } else if (this.y > canvas.height) {
+          this.y = canvas.height;
+          this.speedY *= -1;
+        }
       }
 
       draw() {
@@ -43,7 +59,8 @@ const ParticleBackground = () => {
 
     const init = () => {
       particles = [];
-      for (let i = 0; i < 50; i++) {
+      const particleCount = Math.min(50, Math.floor((canvas.width * canvas.height) / 15000) + 20);
+      for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
     };
@@ -57,14 +74,21 @@ const ParticleBackground = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    // Debounce resize handler to prevent excessive reinitialization
+    let resizeTimeout;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resizeCanvas, 100);
+    };
+
     resizeCanvas();
-    init();
     animate();
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', debouncedResize);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', debouncedResize);
+      clearTimeout(resizeTimeout);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -104,6 +128,50 @@ const Section = ({ id, children }) => {
 
 export default function Home() {
   const containerRef = useRef(null);
+  const [formStatus, setFormStatus] = useState({
+    loading: false,
+    success: false,
+    error: null
+  });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus({ loading: true, success: false, error: null });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      setFormStatus({ loading: false, success: true, error: null });
+      setFormData({ name: '', email: '', message: '' }); // Reset form
+    } catch (error) {
+      setFormStatus({ loading: false, success: false, error: error.message });
+    }
+  };
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -111,6 +179,30 @@ export default function Home() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Add useEffect to handle scroll indicator visibility
+  useEffect(() => {
+    const handleResize = () => {
+      const scrollIndicator = document.querySelector(`.${styles.scrollIndicator}`);
+      if (scrollIndicator) {
+        // Hide scroll indicator on mobile or smaller screens
+        if (window.innerWidth <= 768 || window.innerHeight <= 700) {
+          scrollIndicator.style.display = 'none';
+        } else {
+          scrollIndicator.style.display = 'flex';
+        }
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div ref={containerRef} className={styles.container}>
@@ -175,6 +267,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
+          style={{ display: 'none' }} // Initially hidden, will be shown via useEffect if appropriate
         >
           <span className={styles.scrollText}>Scroll Down</span>
           <div className={styles.scrollLine} />
@@ -343,28 +436,63 @@ export default function Home() {
               <h3>Get in Touch</h3>
               <p>I&apos;m always interested in hearing about new projects and opportunities.</p>
               <div className={styles.contactDetails}>
-                <p>Email: your.email@example.com</p>
-                <p>LinkedIn: linkedin.com/in/yourprofile</p>
-                <p>GitHub: github.com/yourusername</p>
+                <p>Email: frankhl1@umbc.edu</p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/frankleo" target="_blank" rel="noopener noreferrer">linkedin.com/in/frankleo</a></p>
+                <p>GitHub: <a href="https://github.com/frahay123" target="_blank" rel="noopener noreferrer">github.com/frankleo</a></p>
               </div>
             </motion.div>
             <motion.form 
               className={styles.contactForm}
+              onSubmit={handleSubmit}
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className={styles.formGroup}>
-                <input type="text" placeholder="Name" />
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Name"
+                  required
+                />
               </div>
               <div className={styles.formGroup}>
-                <input type="email" placeholder="Email" />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email"
+                  required
+                />
               </div>
               <div className={styles.formGroup}>
-                <textarea placeholder="Message"></textarea>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Message"
+                  required
+                ></textarea>
               </div>
-              <button type="submit" className={styles.submitButton}>
-                Send Message
+              <button 
+                type="submit" 
+                className={styles.submitButton}
+                disabled={formStatus.loading}
+              >
+                {formStatus.loading ? 'Sending...' : 'Send Message'}
               </button>
+              {formStatus.success && (
+                <p className={styles.successMessage}>
+                  Thank you for your message! I&apos;ll get back to you soon.
+                </p>
+              )}
+              {formStatus.error && (
+                <p className={styles.errorMessage}>
+                  {formStatus.error}
+                </p>
+              )}
             </motion.form>
           </div>
         </div>
