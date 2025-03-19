@@ -434,7 +434,7 @@ export default function Home() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <h3>Get in Touch</h3>
-              <p>I&apos;m always interested in hearing about new projects and opportunities.</p>
+              <p>I&apos;m always interested in hearing about new projects and opportunities.      </p>
               <div className={styles.contactDetails}>
                 <p>Email: frankhaydenleo@gmail.com</p>
                 <p>LinkedIn: <a href="https://www.linkedin.com/in/frank-hayden/" target="_blank" rel="noopener noreferrer">linkedin.com/in/frankhayden</a></p>
