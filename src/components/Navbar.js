@@ -110,7 +110,7 @@ export default function Navbar() {
           
           {/* External resume link */}
           <a 
-            href="https://drive.google.com/file/d/1VaPYWcJxwm-EfC_mA7XM04yuWHvqK3HQ/view" 
+            href="https://drive.google.com/file/d/1sH84diEv3ODdNFWuM9SkxeGOewmq3Hm-/view?usp=sharing" 
             target="_blank" 
             rel="noopener noreferrer" 
             className={styles.resumeButton}
