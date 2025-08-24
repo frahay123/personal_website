@@ -374,7 +374,7 @@ export default function Home() {
             >
               <h3>BattleTaskAI</h3>
               <p className={styles.projectDate}>April 2025 – July 2025</p>
-              <p>AI-Powered Productivity Analytics Chrome Extension with active users across 4 continents. Built resilient auto-save pipeline, REST API on Google Cloud Run with 99%+ uptime, and server-side content classifier using Gemini API achieving 85% accuracy. Reduced external AI calls by 90% through intelligent caching.</p>
+              <p>Chrome extension for productivity tracking with active users across 4 continents. Built resilient auto-save pipeline that flushes session analytics every 15s to reduce data loss to near-zero and enable real-time insights. Designed REST API on Google Cloud Run with 99%+ uptime and sub 500ms latency across 1,000+ weekly requests.</p>
               <div className={styles.techStack}>
                 <span>JavaScript</span>
                 <span>Node.js</span>
