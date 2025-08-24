@@ -372,25 +372,14 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <h3>Project 1</h3>
-              <p>Description of your first project goes here. This is a placeholder that you can replace with your actual project details.</p>
+              <h3>BattleTaskAI</h3>
+              <p className={styles.projectDate}>April 2025 – July 2025</p>
+              <p>AI-Powered Productivity Analytics Chrome Extension with active users across 4 continents. Built resilient auto-save pipeline, REST API on Google Cloud Run with 99%+ uptime, and server-side content classifier using Gemini API achieving 85% accuracy. Reduced external AI calls by 90% through intelligent caching.</p>
               <div className={styles.techStack}>
-                <span>React</span>
+                <span>JavaScript</span>
                 <span>Node.js</span>
-                <span>MongoDB</span>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className={styles.projectCard}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <h3>Project 2</h3>
-              <p>Description of your second project goes here. This is a placeholder that you can replace with your actual project details.</p>
-              <div className={styles.techStack}>
-                <span>Python</span>
-                <span>TensorFlow</span>
+                <span>GCP</span>
+                <span>Gemini API</span>
                 <span>Docker</span>
               </div>
             </motion.div>
@@ -400,12 +389,15 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <h3>Project 3</h3>
-              <p>Description of your third project goes here. This is a placeholder that you can replace with your actual project details.</p>
+              <h3>EliteFPL</h3>
+              <p className={styles.projectDate}>December 2024 – January 2025</p>
+              <p>ML-Powered Fantasy Premier League Team Optimizer that extracts 600+ player performance metrics and transforms them into 20+ predictive features. Implemented gradient boosting model delivering +12 points vs FPL average with optimal team generation considering budget, formation, and ownership constraints.</p>
               <div className={styles.techStack}>
-                <span>JavaScript</span>
-                <span>Express</span>
+                <span>Python</span>
                 <span>PostgreSQL</span>
+                <span>Scikit-learn</span>
+                <span>Pandas</span>
+                <span>Ubuntu Server</span>
               </div>
             </motion.div>
           </div>

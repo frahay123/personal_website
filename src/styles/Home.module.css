@@ -225,6 +225,14 @@
     line-height: 1.6;
 }
 
+.projectDate {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
 .techStack {
     display: flex;
     flex-wrap: wrap;
