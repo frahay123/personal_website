@@ -400,6 +400,22 @@ export default function Home() {
                 <span>Ubuntu Server</span>
               </div>
             </motion.div>
+
+            <motion.div 
+              className={styles.projectCard}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <h3>NetworkSec Pro – DDoS Detection Platform</h3>
+              <p className={styles.projectDate}>July 2025 – August 2025</p>
+              <p>Built ML pipeline processing 225k+ network flows from CIC-IDS2017 dataset; implemented missing/infinite value cleaning, standard scaler normalization, and column filtering. Engineered ensemble architecture combining Random Forest, Gradient Boosting, and Neural Network classifiers with soft voting to achieve 98% DDoS detection accuracy. Deployed FastAPI backend serving ML predictions with React frontend enabling real time network flow analysis and interactive attack classification.</p>
+              <div className={styles.techStack}>
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>React</span>
+                <span>Scikit-learn</span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </Section>
@@ -493,6 +509,7 @@ export default function Home() {
                 <span>JavaScript</span>
                 <span>React</span>
                 <span>Node.js</span>
+                <span>FastAPI</span>
                 <span>Bioinformatics</span>
                 <span>Data Analysis</span>
                 <span>Machine Learning</span>
