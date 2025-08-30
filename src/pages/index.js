@@ -236,7 +236,7 @@ export default function Home() {
       }
 
       setFormStatus({ loading: false, success: true, error: null });
-      setFormData({ name: '', email: '', message: '' }); // Reset form
+      setFormData({ name: '', email: '', message: '' }); 
     } catch (error) {
       setFormStatus({ loading: false, success: false, error: error.message });
     }
@@ -251,7 +251,7 @@ export default function Home() {
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - navbarHeight;
       
-      // Use window.scrollTo for better cross-browser compatibility
+      
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
