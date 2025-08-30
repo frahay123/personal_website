@@ -1,6 +1,6 @@
 /* styles/Home.module.css */
 
-/* Main container */
+
 .container {
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     overflow-x: hidden;
 }
 
-/* Section styles */
+
 .section {
     min-height: 100vh;
     width: 100%;
@@ -23,7 +23,7 @@
     padding: 80px 2rem;
 }
 
-/* Main content area */
+
 .mainContent {
     z-index: 1;
     text-align: left;
@@ -65,10 +65,10 @@
     transform: translateX(10px);
 }
 
-/* Scroll indicator - visible only on desktop */
+
 .scrollIndicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -93,7 +93,7 @@
     background: linear-gradient(to bottom, #64ffda 0%, transparent 100%);
 }
 
-/* Section content container */
+
 .sectionContent {
     max-width: 1200px;
     width: 100%;
@@ -172,7 +172,7 @@
     margin-bottom: 1.5rem;
 }
 
-/* Project Section Styles */
+
 .projectGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -253,7 +253,7 @@
     transform: translateY(-2px);
 }
 
-/* About Section Styles */
+/* About section Styles */
 .aboutContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -322,7 +322,7 @@
     transform: translateY(-2px);
 }
 
-/* Contact Section Styles */
+
 .contactContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -371,7 +371,7 @@
     color: #ccd6f6;
 }
 
-/* Contact Form Styles */
+
 .contactForm {
     background: rgba(17, 34, 64, 0.7);
     padding: 2rem;
@@ -444,21 +444,21 @@
     font-size: 0.9rem;
 }
 
-/* Mobile styles */
+
 @media (max-width: 768px) {
-    /* Fix section height on mobile */
+    
     .section {
         min-height: auto;
         padding: 80px 1rem;
     }
     
-    /* Make main content centered on mobile */
+   
     .mainContent {
         text-align: left;
         padding: 0;
     }
     
-    /* Ensure smooth scrolling - fix for CSS modules */
+    
     .container {
         overflow: auto;
         -webkit-overflow-scrolling: touch;
@@ -468,17 +468,17 @@
         height: auto;
     }
     
-    /* Hide scroll indicator on mobile */
+    
     .scrollIndicator {
         display: none;
     }
     
-    /* Ensure content is properly sized on mobile */
+    
     .sectionContent {
         padding: 0.5rem;
     }
     
-    /* Adjust typography for mobile */
+    
     .name {
         font-size: 3rem;
     }
@@ -487,7 +487,7 @@
         font-size: 1.2rem;
     }
     
-    /* Stack all grid content on mobile */
+    
     .projectGrid, 
     .aboutContent, 
     .contactContent, 
@@ -497,7 +497,7 @@
     }
 }
 
-/* Extra small devices (phones, 6 inches and smaller) */
+
 @media (max-width: 480px) {
     .section {
         padding: 60px 0.75rem;
@@ -532,7 +532,7 @@
     }
 }
 
-/* Also hide scroll indicator on smaller desktop screens */
+
 @media (max-height: 700px) {
     .scrollIndicator {
         display: none;

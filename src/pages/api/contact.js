@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Please fill in all fields' });
   }
 
-  // Create a transporter using SMTP
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

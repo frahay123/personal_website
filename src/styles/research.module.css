@@ -21,7 +21,7 @@
   color: white;
 }
 .image1, .image2 {
-  border-radius: 20px; /* Optional: Rounded corners */
-  max-width: 100%; /* Prevents images from overflowing */
-  height: auto; /* Ensures aspect ratio is maintained */
+  border-radius: 20px; 
+  max-width: 100%; 
+  height: auto; 
 }

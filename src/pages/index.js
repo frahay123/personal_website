@@ -183,9 +183,9 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Fix scrolling issues on load
+  
   useEffect(() => {
-    // Force document to be scrollable
+    
     document.documentElement.style.height = 'auto';
     document.documentElement.style.overflow = 'auto';
     document.body.style.height = 'auto';
@@ -245,7 +245,7 @@ export default function Home() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Calculate the position accounting for the navbar height
+     
       const isMobile = window.innerWidth <= 768;
       const navbarHeight = isMobile ? 60 : 80;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
@@ -264,7 +264,7 @@ export default function Home() {
     const handleResize = () => {
       const scrollIndicator = document.querySelector(`.${styles.scrollIndicator}`);
       if (scrollIndicator) {
-        // Hide scroll indicator on mobile or smaller screens
+       
         if (window.innerWidth <= 768 || window.innerHeight <= 700) {
           scrollIndicator.style.display = 'none';
         } else {
@@ -273,13 +273,13 @@ export default function Home() {
       }
     };
 
-    // Initial check
+   
     handleResize();
 
-    // Add event listener for window resize
+    
     window.addEventListener('resize', handleResize);
 
-    // Cleanup
+    
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -293,10 +293,10 @@ export default function Home() {
         height: 'auto'
       } : {}}
     >
-      {/* Only show particles on larger screens */}
+     
       {!isSmallPhone && <ParticleBackground />}
       
-      {/* Hero Section */}
+      {/* Home Section */}
       <Section id="home">
         <motion.div 
           className={styles.mainContent}
@@ -355,7 +355,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          style={{ display: 'none' }} // Initially hidden, will be shown via useEffect if appropriate
+          style={{ display: 'none' }} 
         >
           <span className={styles.scrollText}>Scroll Down</span>
           <div className={styles.scrollLine} />

@@ -28,7 +28,8 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   min-height: 100%;
-  padding-top: 80px; /* Space for fixed navbar */
+  /* Space for fixed navbar */
+  padding-top: 80px; 
   position: relative;
   -webkit-tap-highlight-color: transparent;
   height: auto !important;
@@ -52,13 +53,12 @@ a:hover {
   color: #ccd6f6;
 }
 
-/* Text selection color */
 ::selection {
   background-color: rgba(100, 255, 218, 0.1);
   color: #64ffda;
 }
 
-/* Make sure the next container is full height */
+
 #__next {
   min-height: 100%;
   height: auto;
@@ -68,16 +68,16 @@ a:hover {
 /* Mobile-specific adjustments */
 @media (max-width: 768px) {
   body {
-    padding-top: 60px; /* Smaller padding for mobile navbar */
+    padding-top: 60px; 
     overflow-y: auto !important;
   }
   
-  /* Make links easier to tap */
+  
   a {
     padding: 0.5rem 0;
   }
   
-  /* Reset all properties that might interfere with scrolling */
+  
   html, body, #__next {
     height: auto !important;
     min-height: 100%;
@@ -89,17 +89,17 @@ a:hover {
   }
 }
 
-/* Specific styles for small phones (6-inch and smaller) */
+
 @media (max-width: 480px) {
   body {
     font-size: 14px;
   }
   
   a {
-    padding: 0.6rem 0; /* Larger tap targets for small screens */
+    padding: 0.6rem 0; 
   }
   
-  /* Ensure all content is fully visible */
+  
   html, body, #__next {
     overflow-y: visible !important;
     -webkit-overflow-scrolling: touch;
@@ -108,13 +108,13 @@ a:hover {
     position: relative;
   }
   
-  /* Fix iOS height issues */
+  
   #__next {
     min-height: calc(var(--vh, 1vh) * 100);
   }
 }
 
-/* Utility classes */
+
 .text-light {
   color: #F5EDE3;
 }
@@ -137,7 +137,7 @@ a:hover {
   }
 }
 
-/* These global navbar styles are overridden by the module CSS */
+
 .navbar {
   position: relative;
   width: 100%;
